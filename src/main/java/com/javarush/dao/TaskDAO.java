@@ -36,16 +36,18 @@ public class TaskDAO {
     @Transactional(propagation = Propagation.REQUIRED)
     public Task getTaskById(int id) {
         Query<Task> query = getSession().createQuery("FROM Task WHERE id = :id", Task.class);
+        query.setParameter("id", id);
+        return query.uniqueResult();
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public Task edit(Task task) {
-        return null;
+    public void saveOrUpdate(Task task) {
+        getSession().persist(task);
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
     public void delete(Task task) {
-
+        getSession().remove(task);
     }
 
     private Session getSession() {
