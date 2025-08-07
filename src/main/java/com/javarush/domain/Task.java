@@ -7,32 +7,34 @@ import jakarta.persistence.*;
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private Status description;
-    @Enumerated(EnumType.ORDINAL)
-    private int status;
+    private Integer id;
 
-    public int getId() {
+    private String description;
+
+    @Enumerated(EnumType.ORDINAL)
+    private Status status;
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public Status getDescription() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(Status description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
-    public int getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 }
